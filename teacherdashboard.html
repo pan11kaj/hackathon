@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard</title>
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #283c86, #45a247);
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      background: #283c86;
+      padding: 20px;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #fff;
+      text-transform: uppercase;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .main h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Class Management Section */
+    .class-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .class-card {
+      background: #fff;
+      color: #333;
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .class-card h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .class-card p {
+      margin: 5px 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .class-card .button-group {
+      margin-top: 10px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .class-card button {
+      padding: 10px 15px;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .class-card .enter-class-btn {
+      background: #3b8a3e;
+      color: #fff;
+    }
+
+    .class-card .enter-class-btn:hover {
+      background: #2f6f30;
+    }
+
+    .class-card .remove-class-btn {
+      background: #d9534f;
+      color: #fff;
+    }
+
+    .class-card .remove-class-btn:hover {
+      background: #b52b27;
+    }
+
+    /* Add Class Section */
+    .add-class-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+
+    .add-class-container input {
+      padding: 10px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: calc(100% - 20px);
+      max-width: 300px;
+    }
+
+    .add-class-container button {
+      margin-left: 10px;
+      padding: 10px 20px;
+      background: #ff914d;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .add-class-container button:hover {
+      background: #e8833e;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .class-card {
+        padding: 15px;
+      }
+
+      .add-class-container input,
+      .add-class-container button {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with School Name -->
+  <header class="header">
+    Greenfield International School
+  </header>
+
+  <!-- Main Content -->
+  <div class="main">
+    <h2>Manage Your Classes</h2>
+
+    <!-- Existing Classes -->
+    <div class="class-container" id="class-container">
+      <!-- Example Class -->
+      <div class="class-card">
+        <h3>Class: Mathematics - Grade 10</h3>
+        <p>Timing: Monday & Wednesday, 10:00 AM - 11:30 AM</p>
+        <div class="button-group">
+          <button class="enter-class-btn" onclick="enterClass('Mathematics - Grade 10')">Enter Into Class</button>
+          <button class="remove-class-btn" onclick="deleteClass(this)">Remove Class</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add New Class -->
+    <div class="add-class-container">
+      <input type="text" id="new-class-name" placeholder="Enter class name" />
+      <button onclick="addClass()">Add Class</button>
+    </div>
+  </div>
+
+  <script>
+    // Function to Add a New Class
+    function addClass() {
+      const className = document.getElementById("new-class-name").value.trim();
+
+      if (className === "") {
+        alert("Please enter a class name.");
+        return;
+      }
+
+      // Create a New Class Card
+      const classContainer = document.getElementById("class-container");
+      const classCard = document.createElement("div");
+      classCard.classList.add("class-card");
+
+      classCard.innerHTML = `
+        <h3>Class: ${className}</h3>
+        <p>Timing: To be scheduled</p>
+        <div class="button-group">
+          <button class="enter-class-btn" onclick="enterClass('${className}')">Enter Into Class</button>
+          <button class="remove-class-btn" onclick="deleteClass(this)">Remove Class</button>
+        </div>
+      `;
+
+      classContainer.appendChild(classCard);
+      document.getElementById("new-class-name").value = ""; // Clear the input field
+    }
+
+    // Function to Delete a Class
+    function deleteClass(button) {
+      const classCard = button.parentElement.parentElement;
+      classCard.remove();
+    }
+
+    // Function to Enter a Class
+    function enterClass(className) {
+      alert(`Entering ${className}...`);
+      // Add your logic for handling entering a class here.
+    }
+  </script>
+</body>
+</html>
