@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Signup</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1488190211105-8b0e65b80b4e?q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    /* Colorful overlay */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(255, 154, 158, 0.2), rgba(250, 208, 196, 0.2));
+      z-index: 1;
+    }
+
+    .signup-container {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 35px 40px;
+      border-radius: 25px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 450px;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      transform: translateY(0);
+      transition: all 0.4s ease;
+    }
+
+    .signup-container:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+      border-color: #ffffff;
+    }
+
+    h1 {
+      color: #ffffff;
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      animation: popIn 0.8s ease-out;
+    }
+
+    .welcome-text {
+      color: #ffffff;
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      line-height: 1.6;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .welcome-text p {
+      margin: 10px 0;
+    }
+
+    .welcome-text p:first-child {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .welcome-text p:nth-child(2) {
+      font-style: italic;
+      margin: 15px 0;
+    }
+
+    .welcome-text p:last-child {
+      line-height: 1.8;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      animation: slideUp 0.5s ease-out forwards;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group:hover label {
+      transform: translateX(5px);
+      color: #ffffff;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 12px;
+      font-size: 1rem;
+      color: #ffffff;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #ffffff;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.5);
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .create-account-button {
+      background: linear-gradient(45deg, #2c2c2c, #444444);
+      border: 2px solid #ffffff;
+      color: #ffffff;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      text-shadow: none;
+    }
+
+    .create-account-button:hover {
+      background: linear-gradient(45deg, #444444, #2c2c2c);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #ffffff;
+      font-size: 1.1rem;
+    }
+
+    .login-link a {
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      position: relative;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .login-link a:hover {
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+    }
+
+    .login-link a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -2px;
+      left: 0;
+      background: #ff9a9e;
+      transition: width 0.3s ease;
+    }
+
+    .login-link a:hover::after {
+      width: 100%;
+    }
+
+    /* Animations */
+    @keyframes popIn {
+      0% {
+        transform: scale(0.8);
+        opacity: 0;
+      }
+      100% {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Stars background animation */
+    .stars {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: white;
+      border-radius: 50%;
+      animation: twinkle 1s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.3; }
+      50% { opacity: 1; }
+    }
+
+    .error-message {
+      color: #ff4444;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .error-input {
+      border-color: #ff4444 !important;
+      box-shadow: 0 0 5px rgba(255, 68, 68, 0.3) !important;
+    }
+  </style>
+</head>
+<body>
+  <!-- Stars background -->
+  <div class="stars"></div>
+
+  <div class="signup-container">
+    <h1>Join Us!</h1>
+    <div class="welcome-text">
+      <p>🌟 Welcome Future Star! 🌟</p>
+      <p>Ready to begin your learning adventure? You're about to join an amazing community of students!</p>
+      <p>📚 Access awesome study materials<br>
+         💡 Learn from the best teachers<br>
+         🤝 Connect with fellow students</p>
+    </div>
+    <form>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required placeholder="Enter your name">
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required placeholder="Create a password">
+      </div>
+      <button type="submit" class="create-account-button">Create Account</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="studentlogin.html">Login here</a>
+    </div>
+  </div>
+
+  <script>
+    // Optimize star creation
+    const createStars = () => {
+      const fragment = document.createDocumentFragment();
+      const starsContainer = document.querySelector('.stars');
+      
+      // Use requestAnimationFrame for smooth animation
+      requestAnimationFrame(() => {
+        for(let i = 0; i < 50; i++) {
+          const star = document.createElement('div');
+          star.className = 'star hardware-accelerated';
+          star.style.cssText = `
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation-delay: ${Math.random()}s;
+          `;
+          fragment.appendChild(star);
+        }
+        starsContainer.appendChild(fragment);
+      });
+    };
+
+    // Run after DOM is loaded
+    document.addEventListener('DOMContentLoaded', createStars);
+  </script>
+</body>
+</html>

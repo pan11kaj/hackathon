@@ -1,0 +1,9 @@
+<head>
+  <!-- Add these meta tags for better performance -->
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://images.unsplash.com">
+  
+  <!-- Preload critical assets -->
+  <link rel="preload" href="styles.css" as="style">
+  <link rel="preload" as="image" href="[background-image-url]">
+</head> 

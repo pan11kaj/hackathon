@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Login</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      font-family: 'Comic Sans MS', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1537432376769-00f5c2f4c8d2?q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    /* Playful overlay with gradient */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(106, 17, 203, 0.4), rgba(37, 117, 252, 0.4));
+      z-index: 1;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.15);
+      padding: 30px 40px;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(8px);
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      animation: float 6s ease-in-out infinite;
+      transform: translateZ(0);
+      will-change: transform;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-container:hover {
+      transform: translateY(-10px) rotateX(5deg);
+      box-shadow: 0 15px 35px rgba(31, 38, 135, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    h1 {
+      color: #ffffff;
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      animation: bounce 1s ease;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      position: relative;
+      animation: slideIn 0.5s ease-out forwards;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transform: translateX(0);
+      transition: transform 0.3s ease;
+    }
+
+    .form-group:hover label {
+      transform: translateX(10px);
+      color: #ffd700;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      font-size: 1rem;
+      color: #ffffff;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      border-color: #ffd700;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      transform: scale(1.02);
+    }
+
+    .login-button {
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 15px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .login-button:hover {
+      background: linear-gradient(45deg, #2575fc, #6a11cb);
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 10px 20px rgba(37, 117, 252, 0.4);
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #ffffff;
+      font-size: 1.1rem;
+    }
+
+    .signup-link a {
+      color: #ffd700;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .signup-link a:hover {
+      color: #ffffff;
+      text-shadow: 0 0 10px #ffd700;
+      transform: scale(1.1);
+      display: inline-block;
+    }
+
+    /* Fun Animations */
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) rotate(0);
+      }
+      50% {
+        transform: translateY(-10px) rotate(1deg);
+      }
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: translateY(-50px);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(20px);
+      }
+      100% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Floating elements decoration */
+    .floating-element {
+      position: absolute;
+      pointer-events: none;
+      z-index: 1;
+      animation: floatElement 10s infinite linear;
+      will-change: transform;
+      transform: translateZ(0);
+    }
+
+    .element-1 {
+      top: 10%;
+      left: 10%;
+      font-size: 2rem;
+      content: "📚";
+    }
+
+    .element-2 {
+      top: 20%;
+      right: 15%;
+      font-size: 2.5rem;
+      content: "💻";
+    }
+
+    .element-3 {
+      bottom: 15%;
+      left: 20%;
+      font-size: 2rem;
+      content: "✏️";
+    }
+
+    @keyframes floatElement {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      50% {
+        transform: translate(15px, 15px) rotate(180deg);
+      }
+      100% {
+        transform: translate(0, 0) rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating decorative elements -->
+  <div class="floating-element element-1">📚</div>
+  <div class="floating-element element-2">💻</div>
+  <div class="floating-element element-3">✏️</div>
+
+  <div class="login-container">
+    <h1>Student Login</h1>
+    <form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="login-button">Login</button>
+    </form>
+    <div class="signup-link">
+      New student? <a href="studentsignup.html">Sign up here!</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    /* Dark overlay */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .login-container {
+      background: rgba(28, 32, 38, 0.95);
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 0.8s ease-out;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .login-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .login-container h1 {
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+      animation: slideDown 0.8s ease-out;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      animation: slideIn 0.8s ease-out;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #e0e0e0;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      color: #ffffff;
+    }
+
+    .form-group input:focus {
+      border-color: #ff7e5f;
+      box-shadow: 0 0 10px rgba(255, 126, 95, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .login-button {
+      background: linear-gradient(135deg, #ff7e5f, #feb47b);
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .login-button:hover {
+      background: linear-gradient(135deg, #feb47b, #ff7e5f);
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #b0b0b0;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .signup-link a {
+      color: #ff7e5f;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .signup-link a:hover {
+      color: #feb47b;
+      text-shadow: 0 0 10px rgba(255, 126, 95, 0.3);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.02);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .login-container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .login-container h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <h1>Teacher Login</h1>
+    <form>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="login-button">Login</button>
+    </form>
+    <div class="signup-link">
+      Don't have an account? <a href="teachersignup.html">Sign up</a>
+    </div>
+  </div>
+</body>
+</html>

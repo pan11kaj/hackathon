@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Signup</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('https://images.unsplash.com/photo-1481627834876-b7833e8f5570?q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+    }
+
+    /* Dark overlay */
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    .signup-container {
+      background: rgba(28, 32, 38, 0.95);
+      padding: 30px 40px;
+      border-radius: 10px;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 400px;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 0.8s ease-out;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .signup-container:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    .welcome-message {
+      color: #ff7e5f;
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      animation: fadeIn 1s ease-out;
+      line-height: 1.6;
+    }
+
+    .signup-container h1 {
+      color: #ffffff;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 2rem;
+      animation: slideDown 0.8s ease-out;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+      animation: slideIn 0.8s ease-out;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #e0e0e0;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 5px;
+      font-size: 1rem;
+      outline: none;
+      transition: all 0.3s ease;
+      color: #ffffff;
+    }
+
+    .form-group input:focus {
+      border-color: #43cea2;
+      box-shadow: 0 0 10px rgba(67, 206, 162, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .create-account-button {
+      background: linear-gradient(to right, #43cea2, #185a9d);
+      color: white;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      cursor: pointer;
+      width: 100%;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    .create-account-button:hover {
+      background: linear-gradient(to right, #185a9d, #43cea2);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(67, 206, 162, 0.4);
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 20px;
+      color: #b0b0b0;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .login-link a {
+      color: #43cea2;
+      text-decoration: none;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .login-link a:hover {
+      color: #185a9d;
+      text-shadow: 0 0 10px rgba(67, 206, 162, 0.3);
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideIn {
+      from {
+        opacity: 0;
+        transform: translateX(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.02);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 480px) {
+      .signup-container {
+        margin: 20px;
+        padding: 20px;
+      }
+
+      .signup-container h1 {
+        font-size: 1.8rem;
+      }
+    }
+
+    .error-message {
+      color: #ff4444;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .error-input {
+      border-color: #ff4444 !important;
+      box-shadow: 0 0 5px rgba(255, 68, 68, 0.3) !important;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    .shake {
+      animation: shake 0.3s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <div class="signup-container">
+    <h1>Teacher Signup</h1>
+    <div class="welcome-message">
+      Welcome to our teaching community! Join us in shaping the future of education.
+      Your expertise and passion will inspire the next generation of learners.
+    </div>
+    <form>
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+      </div>
+      <button type="submit" class="create-account-button">Create Account</button>
+    </form>
+    <div class="login-link">
+      Already have an account? <a href="teacherlogin.html">Login</a>
+    </div>
+  </div>
+</body>
+</html>
