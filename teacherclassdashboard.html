@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Class Dashboard</title>
+  <style>
+    /* General Body Styling */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #4a90e2, #f39c12);
+      color: #333;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .header {
+      background: #34495e;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Class Info Section */
+    .class-info {
+      text-align: center;
+      padding: 15px;
+      background: #ecf0f1;
+      margin: 20px auto 10px auto;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 600px;
+    }
+
+    .class-info h2 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .class-info p {
+      margin: 5px 0;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    /* Main Sections */
+    .sections {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .section {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      width: 300px;
+      padding: 15px;
+      text-align: center;
+    }
+
+    .section h3 {
+      margin: 0 0 10px 0;
+      font-size: 1.2rem;
+      color: #2c3e50;
+    }
+
+    .section button {
+      padding: 10px 15px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 5px;
+      background: #4a90e2;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .section button:hover {
+      background: #357abd;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .section {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header with School Name -->
+  <header class="header">
+    Greenfield International School
+  </header>
+
+  <!-- Class Info Section -->
+  <div class="class-info">
+    <h2>Class: Mathematics - Grade 10</h2>
+    <p>Subject: Algebra and Geometry</p>
+  </div>
+
+  <!-- Main Sections -->
+  <div class="sections">
+    <!-- Stream Section -->
+    <div class="section">
+      <h3>Stream</h3>
+      <button onclick="manageStream()">View and Manage Stream</button>
+    </div>
+
+    <!-- Assignments Section -->
+    <div class="section">
+      <h3>Assignments</h3>
+      <button onclick="manageAssignments()">View and Manage Assignments</button>
+    </div>
+
+    <!-- Students Section -->
+    <div class="section">
+      <h3>Students</h3>
+      <button onclick="manageStudents()">View and Manage Students</button>
+    </div>
+  </div>
+
+  <script>
+    // Function for managing Stream
+    function manageStream() {
+      alert('Navigating to Stream Management...');
+      // Add logic to navigate to the Stream management page
+    }
+
+    // Function for managing Assignments
+    function manageAssignments() {
+      alert('Navigating to Assignment Management...');
+      // Add logic to navigate to the Assignment management page
+    }
+
+    // Function for managing Students
+    function manageStudents() {
+      alert('Navigating to Student Management...');
+      // Add logic to navigate to the Student management page
+    }
+  </script>
+</body>
+</html>
