@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher & Student Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #f4f4f9;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .login-container {
+      margin-top: 50px;
+    }
+
+    .login-btn {
+      display: inline-block;
+      width: 200px;
+      padding: 15px;
+      margin: 20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+      text-align: center;
+    }
+
+    .teacher-btn {
+      background-color: #007bff;
+    }
+
+    .teacher-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .student-btn {
+      background-color: #28a745;
+    }
+
+    .student-btn:hover {
+      background-color: #1e7e34;
+    }
+
+    footer {
+      margin-top: 50px;
+      color: #777;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the Education Platform</h1>
+  <p>Please select your role to log in:</p>
+  
+  <div class="login-container">
+    <!-- Teacher login button -->
+    <a href="/teacher-login" class="login-btn teacher-btn">Teacher Signup</a>
+
+    <!-- Student login button -->
+    <a href="/student-login" class="login-btn student-btn">Student Signup</a>
+  </div>
+
+  <footer>
+    &copy; 2025 Education Platform. All rights reserved.
+  </footer>
+</body>
+</html>
